@@ -8,10 +8,6 @@ blocks:
   - name: Docker
     task:
       env_vars:
-        - name: DOCKER_USERNAME
-          value: semaphore
-        - name: DOCKER_PASSWORD
-          value: invalid
         - name: DOCKER_IMAGE_TAG
           value: v0
       jobs:
@@ -22,3 +18,5 @@ blocks:
       prologue:
         commands:
           - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+      secrets:
+        - name: docker-secrets
