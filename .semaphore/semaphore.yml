@@ -1,21 +1,30 @@
 version: v1.0
-name: Docker
+name: Initial Pipeline
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Docker
+  - name: 'Block #1'
     task:
       jobs:
-        - name: Build and Push
+        - name: 'Job #1'
           commands:
-            - 'docker build . --file Dockerfile --tag $DOCKER_IMAGE:$DOCKER_TAG'
-            - >-
-              docker push
-              $SEMAPHORE_PROJECT_NAME:$SEMAPHORE_GIT_BRANCH-$SEMAPHORE_GIT_SHA
-      prologue:
-        commands:
-          - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
-      secrets:
-        - name: docker-secrets
+            - checkout
+            - ls
+        - name: 'Job #2'
+          commands:
+            - checkout
+            - ls
+        - name: 'Job #3'
+          commands:
+            - checkout
+            - ls
+        - name: 'Job #4'
+          commands:
+            - checkout
+            - ls
+        - name: 'Job #5'
+          commands:
+            - checkout
+            - ls
